@@ -5,7 +5,7 @@ import java.util.Scanner;
 
 public class GuessingGame {
     private static final int MIN_VALUE = 1;
-    private static final int MAX_VALUE = 1000;
+    private static final int MAX_VALUE = 100;
     private static final SecureRandom rng = new SecureRandom();
     private static final Scanner scanner = new Scanner(System.in);
 
@@ -39,7 +39,7 @@ public class GuessingGame {
 
             if (guess < answer) {
                 System.out.println("It's higher.");
-            } else if (guess > answer) {
+            } else {
                 System.out.println("It's lower.");
             }
         }
@@ -55,7 +55,7 @@ public class GuessingGame {
         return Character.toLowerCase(response.charAt(0)) == 'y';
     }
 
-    private static void printResults(List<Long> guessCountPerGame) {
+    private static void printOverallResults(List<Long> guessCountPerGame) {
         long totalGames = guessCountPerGame.size();
         long totalGuesses = 0;
         // This could look pretty crazy if there aren't any values in the guess count
@@ -87,7 +87,6 @@ public class GuessingGame {
             guessCountPerGame.add(playGame());
         } while (promptForNextGame());
 
-        printResults(guessCountPerGame);
-
+        printOverallResults(guessCountPerGame);
     }
 }
