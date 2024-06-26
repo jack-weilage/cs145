@@ -1,6 +1,4 @@
 import java.security.SecureRandom;
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Scanner;
 
 public class GuessingGame {
@@ -55,20 +53,23 @@ public class GuessingGame {
         return Character.toLowerCase(response.charAt(0)) == 'y';
     }
 
-    private static void printOverallResults(List<Long> guessCountPerGame) {
-        long totalGames = guessCountPerGame.size();
+    public static void main(String[] args) {
+        printIntroduction();
+
+        long totalGames = 0;
         long totalGuesses = 0;
-        // This could look pretty crazy if there aren't any values in the guess count
-        // list, but this function should never be called before any games are played.
         long bestGuessCount = Integer.MAX_VALUE;
 
-        for (int i = 0; i < totalGames; i++) {
-            long guessCount = guessCountPerGame.get(i);
+        do {
+            long guesses = playGame();
 
-            bestGuessCount = Math.min(bestGuessCount, guessCount);
-            totalGuesses += guessCount;
-        }
-        double averageGuessCount = totalGuesses / totalGames;
+            totalGuesses += guesses;
+            bestGuessCount = Math.min(bestGuessCount, guesses);
+
+            totalGames++;
+        } while (promptForNextGame());
+
+        double averageGuessCount = (double) totalGuesses / (double) totalGames;
 
         System.out.println();
         System.out.println("Overall results:");
@@ -76,17 +77,5 @@ public class GuessingGame {
         System.out.printf("    total guesses    = %d\n", totalGuesses);
         System.out.printf("    guesses per game = %f\n", averageGuessCount);
         System.out.printf("    best game        = %d\n", bestGuessCount);
-    }
-
-    public static void main(String[] args) {
-        printIntroduction();
-
-        List<Long> guessCountPerGame = new ArrayList<Long>();
-
-        do {
-            guessCountPerGame.add(playGame());
-        } while (promptForNextGame());
-
-        printOverallResults(guessCountPerGame);
     }
 }
