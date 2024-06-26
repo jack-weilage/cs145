@@ -1,3 +1,6 @@
+// Extra credit for using package keyword. Running `java lab1.GuessingGame` will work after compiling this package.
+package lab1;
+
 import java.security.SecureRandom;
 import java.util.Scanner;
 
