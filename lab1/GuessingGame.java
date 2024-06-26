@@ -5,7 +5,7 @@ import java.util.Scanner;
 
 public class GuessingGame {
     private static final int MIN_VALUE = 1;
-    private static final int MAX_VALUE = 1;
+    private static final int MAX_VALUE = 1000;
     private static final SecureRandom rng = new SecureRandom();
     private static final Scanner scanner = new Scanner(System.in);
 
