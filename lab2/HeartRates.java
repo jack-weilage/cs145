@@ -1,3 +1,6 @@
+// Extra credit: 3 classes in this file + GitHub/VSCode + VSCode debugger
+package heartRates;
+
 // Maintains information about a person's maximum and target heart rates.
 // Note: This class assumes that the birth month, day, and year are correct values.
 public class HeartRates {
@@ -61,5 +64,63 @@ public class HeartRates {
 
     public double getMaximumTargetHeartRate() {
         return 0.85 * getMaximumHeartRate();
+    }
+
+    public Range getHeartRateRange() {
+        int maxHeartRate = getMaximumHeartRate();
+
+        return new Range(0.5 * maxHeartRate, 0.85 * maxHeartRate);
+    }
+}
+
+// An additional class that stores a minimum and maximum value as part of a
+// range.
+class Range {
+    private double min;
+    private double max;
+
+    public Range(double min, double max) {
+        this.min = min;
+        this.max = max;
+    }
+
+    public double getMin() {
+        return min;
+    }
+
+    public void setMin(double min) {
+        this.min = min;
+    }
+
+    public double getMax() {
+        return max;
+    }
+
+    public void setMax(double max) {
+        this.max = max;
+    }
+}
+
+class Bitboard {
+    // A 64 bit number, representing each of the squares on a chess board.
+    private long bits;
+
+    public Bitboard(long bits) {
+        this.bits = bits;
+    }
+
+    // Checks if a specific square is set.
+    public boolean isSet(long square) {
+        return (this.bits & (1 << square)) != 0;
+    }
+
+    // Sets the bit at `square`.
+    public void setSquare(long square) {
+        this.bits |= 1 << square;
+    }
+
+    // Unsets the bit at `square`.
+    public void unsetSquare(long square) {
+        this.bits ^= 1 << square;
     }
 }
