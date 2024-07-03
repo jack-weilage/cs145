@@ -1,5 +1,5 @@
 // Extra credit: 3 classes in this file + GitHub/VSCode + VSCode debugger
-package heartRates;
+package lab2;
 
 // Maintains information about a person's maximum and target heart rates.
 // Note: This class assumes that the birth month, day, and year are correct values.
